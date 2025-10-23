@@ -26,7 +26,6 @@ button {
   cursor: pointer;
 }
 
-/* Simple utilities used by components */
 .flex {
   display: flex;
 }
