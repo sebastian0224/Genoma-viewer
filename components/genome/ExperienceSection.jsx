@@ -1,11 +1,14 @@
 export default function ExperienceSection({ experiences }) {
-  if (!experiences?.length) return null;
+  const jobs = experiences?.filter((exp) => exp.category === "jobs");
+
+  if (!jobs?.length) return null;
+
   return (
-    <section className="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-[var(--color-border)] p-6 md:p-8">
+    <section className="lg:col-span-2 bg-bg-card rounded-xl border border-[#3f4147] p-6 md:p-8">
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 rounded-lg bg-[var(--color-primary)] bg-opacity-10 flex items-center justify-center">
+        <div className="w-10 h-10 rounded-lg bg-[#c4d82e]/10 flex items-center justify-center">
           <svg
-            className="w-5 h-5 text-[var(--color-primary)]"
+            className="w-5 h-5 text-[#c4d82e]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -18,29 +21,29 @@ export default function ExperienceSection({ experiences }) {
             />
           </svg>
         </div>
-        <h2 className="text-2xl font-bold text-[var(--color-text-primary)]">
-          Experience
+        <h2 className="text-xl md:text-2xl font-bold text-text-primary">
+          Work Experience
         </h2>
       </div>
-      <div>
-        {experiences.map((exp, index) => (
+
+      <div className="space-y-6">
+        {jobs.map((job, index) => (
           <div
-            key={exp.id}
+            key={job.id}
             className={`pb-6 ${
-              index !== experiences.length - 1
-                ? "border-b border-[var(--color-border-light)]"
-                : ""
+              index !== jobs.length - 1 ? "border-b border-[#3f4147]" : ""
             }`}
           >
-            <h3 className="text-lg font-semibold text-[var(--color-text-primary)] mb-2">
-              {exp.name}
+            <h3 className="text-base md:text-lg font-semibold text-text-primary mb-2">
+              {job.name}
             </h3>
-            <p className="text-sm text-[var(--color-text-muted)] mb-3">
-              {exp.fromMonth} {exp.fromYear}
+            <p className="text-xs md:text-sm text-text-muted mb-3">
+              {job.fromMonth} {job.fromYear}
+              {job.toMonth && job.toYear && ` - ${job.toMonth} ${job.toYear}`}
             </p>
-            {exp.additionalInfo && (
-              <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed whitespace-pre-line">
-                {exp.additionalInfo}
+            {job.additionalInfo && (
+              <p className="text-text-secondary text-sm leading-relaxed whitespace-pre-line">
+                {job.additionalInfo}
               </p>
             )}
           </div>

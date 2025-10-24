@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧬 Genome Viewer
 
-## Getting Started
+**Genome Viewer** is a web application that allows users to **search and visualize professional genome** from the [Torre](https://torre.ai) platform.
+It combines clean UI, modular architecture, and real API data to create an interactive portfolio-ready experience.
 
-First, run the development server:
+---
+
+## 🚀 Tech Stack
+
+- **Framework:** [Next.js 15 (App Router)](https://nextjs.org/docs/app)
+- **Frontend:** [React 19](https://react.dev/) + [Tailwind CSS](https://tailwindcss.com/)
+- **Language:** JavaScript
+- **Deployment:** [Vercel](https://vercel.com/)
+
+---
+
+## 🌐 Torre Endpoints Used
+
+1. **🔍 Search Entities (People & Organizations)**
+
+   ```
+   POST https://torre.ai/api/entities/_searchStream
+   ```
+
+   Used to search for people by name or keyword.
+   Returns basic profile data such as `publicId`, which is used to access each genome.
+
+2. **🧬 Get Genome (Bio by Username)**
+
+   ```
+   GET https://torre.bio/api/bios/{username}
+   ```
+
+   Retrieves the full professional genome of a person:
+   personal info, summary, experience, education, strengths, and languages.
+
+---
+
+## 🧭 Application Flow
+
+1. The user enters a **user name** on the home page (`/`).
+2. The app uses the **\_searchStream endpoint** to fetch matching people.
+3. When the user selects a profile, it navigates to
+   **`/genome/[username]`**.
+4. The genome page fetches complete data from
+   **`/bios/{username}`** using `getGenomeBio()` inside `/lib`.
+5. The information is rendered in separate, reusable components:
+
+   - `PersonSection` → photo, name, headline, summary
+   - `ExperienceSection` → jobs and professional history
+   - `EducationSection` → education details
+   - `LanguagesSection` → spoken languages
+
+---
+
+## ⚙️ Run Locally
 
 ```bash
+# 1. Clone the repository
+git clone https://github.com/yourusername/genome-viewer.git
+
+# 2. Install dependencies
+npm install
+
+# 3. Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open **[http://localhost:3000](http://localhost:3000)** in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Author:** Sebastián Osorio Carrasquilla

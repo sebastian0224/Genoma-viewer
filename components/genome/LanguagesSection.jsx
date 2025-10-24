@@ -1,11 +1,11 @@
 export default function LanguagesSection({ languages }) {
   if (!languages?.length) return null;
   return (
-    <section className="bg-white rounded-2xl shadow-sm border border-[var(--color-border)] p-6">
+    <section className="bg-bg-card rounded-xl border border-[#3f4147] p-6">
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 rounded-lg bg-[var(--color-primary)] bg-opacity-10 flex items-center justify-center">
+        <div className="w-10 h-10 rounded-lg bg-[#c4d82e]/10 flex items-center justify-center">
           <svg
-            className="w-5 h-5 text-[var(--color-primary)]"
+            className="w-5 h-5 text-[#c4d82e]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -18,17 +18,17 @@ export default function LanguagesSection({ languages }) {
             />
           </svg>
         </div>
-        <h2 className="text-xl font-bold text-[var(--color-text-primary)]">
+        <h2 className="text-lg md:text-xl font-bold text-text-primary">
           Languages
         </h2>
       </div>
       <div className="space-y-3">
         {languages.map((lang, i) => (
           <div key={i} className="flex items-center justify-between py-2">
-            <span className="font-medium text-[var(--color-text-primary)]">
+            <span className="font-medium text-text-primary text-sm md:text-base">
               {lang.language}
             </span>
-            <span className="text-sm px-3 py-1 rounded-full bg-[var(--color-border-light)] text-[var(--color-text-secondary)]">
+            <span className="text-xs md:text-sm px-3 py-1 rounded-full bg-bg-secondary text-text-secondary border border-[#3f4147]">
               {lang.fluency}
             </span>
           </div>

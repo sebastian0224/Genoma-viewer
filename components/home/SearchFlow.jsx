@@ -18,22 +18,22 @@ export default function SearchFlow() {
       const data = await searchPeople(query);
 
       if (!data || data.length === 0) {
-        setError(`No se encontraron usuarios con "${query}"`);
+        setError(`No users found with "${query}"`);
       } else {
         setResults(data);
       }
     } catch (err) {
       console.error("Error searching people:", err);
-      setError("Error al buscar. Por favor intenta de nuevo.");
+      setError("Error searching. Please try again.");
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <>
+    <div className="space-y-8">
       <SearchBar onSearch={handleSearch} isLoading={isLoading} />
       <SearchResults results={results} isLoading={isLoading} error={error} />
-    </>
+    </div>
   );
 }

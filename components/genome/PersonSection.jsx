@@ -1,30 +1,28 @@
 export default function PersonSection({ person }) {
   return (
-    <section className="bg-white rounded-2xl shadow-sm border border-[var(--color-border)] overflow-hidden">
-      <div className="p-8 md:p-12">
+    <section className="bg-bg-card rounded-xl border border-[#3f4147] overflow-hidden">
+      <div className="p-6 md:p-10">
         <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
-          {/* Avatar */}
-          <div className="flex-shrink-0">
+          <div className="shrink-0">
             <img
               src={person.picture || "/placeholder.svg"}
               alt={person.name}
-              className="w-32 h-32 md:w-40 md:h-40 rounded-2xl object-cover shadow-md ring-4 ring-[var(--color-border-light)]"
+              className="w-28 h-28 md:w-36 md:h-36 rounded-xl object-cover ring-2 ring-[#3f4147]"
             />
           </div>
-          {/* Info */}
           <div className="flex-1 text-center md:text-left space-y-3">
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold text-[var(--color-text-primary)] mb-2">
+              <h1 className="text-2xl md:text-3xl font-bold text-text-primary mb-2">
                 {person.name}
               </h1>
-              <p className="text-lg md:text-xl text-[var(--color-text-secondary)] font-medium">
+              <p className="text-base md:text-lg text-text-secondary font-medium">
                 {person.professionalHeadline}
               </p>
             </div>
             {person.location?.name && (
-              <div className="flex items-center justify-center md:justify-start gap-2 text-[var(--color-text-muted)]">
+              <div className="flex items-center justify-center md:justify-start gap-2 text-text-muted">
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -42,11 +40,11 @@ export default function PersonSection({ person }) {
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                <span>{person.location.name}</span>
+                <span className="text-sm">{person.location.name}</span>
               </div>
             )}
             {person.summaryOfBio && (
-              <p className="text-[var(--color-text-secondary)] leading-relaxed pt-4 max-w-3xl">
+              <p className="text-text-secondary leading-relaxed pt-3 max-w-3xl text-sm md:text-base">
                 {person.summaryOfBio}
               </p>
             )}
